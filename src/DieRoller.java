@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 class Main {
     public static void main(String[] args) {
         // Task 1: Count up by 1 from 0 to 30
@@ -55,4 +58,36 @@ class Main {
         }
     }
     }
+
+public class DieRoller {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+        boolean playAgain = true;
+
+        while (playAgain) {
+            System.out.println("\nRoll\tDie1\tDie2\tDie3\tSum");
+            System.out.println("--------------------------------------");
+
+            int rollCount = 0;
+            int die1, die2, die3;
+
+            do {
+                rollCount++;
+                die1 = rand.nextInt(6) + 1;
+                die2 = rand.nextInt(6) + 1;
+                die3 = rand.nextInt(6) + 1;
+                int sum = die1 + die2 + die3;
+
+                System.out.printf("%3d\t%3d\t%3d\t%3d\t%3d\n", rollCount, die1, die2, die3, sum);
+            } while (!(die1 == die2 && die2 == die3));
+
+            System.out.println("Triple! You got " + die1 + "s.");
+            System.out.print("Do you want to roll again? (y/n): ");
+            playAgain = scanner.next().equalsIgnoreCase("y");
+        }
+
+        scanner.close();
+    }
+}
 
